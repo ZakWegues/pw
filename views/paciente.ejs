@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retirar Senha</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <h1>Sistema de Atendimento</h1>
+    <nav>
+      <a href="/paciente">Paciente</a>
+      <a href="/funcionario">Funcionário</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="painel">
+      <h2>Senha Atual</h2>
+      <div class="senha-grande <%= senhaAtual === 0 ? 'vazia' : '' %>">
+        <%= senhaAtual > 0 ? String(senhaAtual).padStart(3, '0') : '---' %>
+      </div>
+
+      <% if (historico.length > 0) { %>
+        <div class="historico">
+          <h3>Últimas chamadas</h3>
+          <div class="lista-historico">
+            <% historico.forEach(function(s) { %>
+              <span class="senha-anterior"><%= String(s).padStart(3, '0') %></span>
+            <% }); %>
+          </div>
+        </div>
+      <% } %>
+    </div>
+
+    <div class="retirar">
+      <% if (minhaSenha) { %>
+        <div class="minha-senha">
+          <p>Sua senha é:</p>
+          <span class="numero-senha"><%= String(minhaSenha).padStart(3, '0') %></span>
+          <p class="aviso">Aguarde ser chamado.</p>
+        </div>
+      <% } %>
+
+      <form action="/pegar-senha" method="POST">
+        <button type="submit" class="btn-pegar">
+          <%= minhaSenha ? 'Pegar nova senha' : 'Retirar senha' %>
+        </button>
+      </form>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,188 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #eef2f7;
+  color: #333;
+}
+
+header {
+  background-color: #1a5fa8;
+  color: white;
+  padding: 16px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header h1 {
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 0.95rem;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+}
+
+nav a:hover {
+  border-bottom-color: white;
+}
+
+main {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.painel {
+  background: white;
+  border-radius: 8px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.painel h2 {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #666;
+  margin-bottom: 16px;
+}
+
+.senha-grande {
+  font-size: 5rem;
+  font-weight: bold;
+  color: #1a5fa8;
+  background-color: #eef2f7;
+  border-radius: 8px;
+  padding: 20px 40px;
+  display: inline-block;
+  min-width: 180px;
+  letter-spacing: 6px;
+}
+
+.senha-grande.vazia {
+  color: #aaa;
+}
+
+.historico {
+  margin-top: 24px;
+}
+
+.historico h3 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #999;
+  margin-bottom: 12px;
+}
+
+.lista-historico {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.senha-anterior {
+  background-color: #dce8f8;
+  color: #1a5fa8;
+  font-size: 1.4rem;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 6px;
+  letter-spacing: 2px;
+}
+
+.retirar {
+  background: white;
+  border-radius: 8px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.minha-senha {
+  margin-bottom: 24px;
+}
+
+.minha-senha p {
+  color: #555;
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+}
+
+.numero-senha {
+  display: inline-block;
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: #1a5fa8;
+  letter-spacing: 4px;
+  margin-bottom: 8px;
+}
+
+.aviso {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.btn-pegar {
+  background-color: #1a5fa8;
+  color: white;
+  border: none;
+  padding: 14px 36px;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  letter-spacing: 1px;
+}
+
+.btn-pegar:hover {
+  background-color: #154e8c;
+}
+
+.controle {
+  background: white;
+  border-radius: 8px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.btn-proxima {
+  background-color: #27a047;
+  color: white;
+  border: none;
+  padding: 16px 40px;
+  font-size: 1.1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  letter-spacing: 1px;
+}
+
+.btn-proxima:hover:not(:disabled) {
+  background-color: #1f8a3a;
+}
+
+.btn-proxima:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+.sem-fila {
+  margin-top: 14px;
+  color: #999;
+  font-size: 0.9rem;
+}

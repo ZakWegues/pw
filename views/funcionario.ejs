@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel do Funcionário</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <h1>Painel do Funcionário</h1>
+    <nav>
+      <a href="/paciente">Paciente</a>
+      <a href="/funcionario">Funcionário</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="painel">
+      <h2>Atendendo agora</h2>
+      <div class="senha-grande <%= senhaAtual === 0 ? 'vazia' : '' %>">
+        <%= senhaAtual > 0 ? String(senhaAtual).padStart(3, '0') : '---' %>
+      </div>
+    </div>
+
+    <div class="controle">
+      <form action="/proxima" method="POST">
+        <button
+          type="submit"
+          class="btn-proxima"
+          <%= !temProxima ? 'disabled' : '' %>
+        >
+          Chamar próxima senha
+        </button>
+      </form>
+      <% if (!temProxima) { %>
+        <p class="sem-fila">Nenhuma senha na fila.</p>
+      <% } %>
+    </div>
+  </main>
+</body>
+</html>
