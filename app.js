@@ -7,36 +7,22 @@ app.use(express.static('public'));
 
 let proximaSenha = 1;
 let senhaAtual = 0;
+let ultimaEmitida = null;
 let historico = [];
 
 app.get('/', (req, res) => {
-  res.redirect('/paciente');
-});
-
-app.get('/paciente', (req, res) => {
-  res.render('paciente', {
+  res.render('index', {
     senhaAtual,
     historico: historico.slice().reverse(),
-    minhaSenha: null
+    ultimaEmitida,
+    temProxima: proximaSenha > senhaAtual + 1
   });
 });
 
 app.post('/pegar-senha', (req, res) => {
-  const minhaSenha = proximaSenha;
+  ultimaEmitida = proximaSenha;
   proximaSenha++;
-
-  res.render('paciente', {
-    senhaAtual,
-    historico: historico.slice().reverse(),
-    minhaSenha
-  });
-});
-
-app.get('/funcionario', (req, res) => {
-  res.render('funcionario', {
-    senhaAtual,
-    temProxima: proximaSenha > senhaAtual + 1
-  });
+  res.redirect('/');
 });
 
 app.post('/proxima', (req, res) => {
@@ -49,7 +35,7 @@ app.post('/proxima', (req, res) => {
     }
     senhaAtual++;
   }
-  res.redirect('/funcionario');
+  res.redirect('/');
 });
 
 app.listen(3000, () => {

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema de Senhas</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <header>
+    <h1>Sistema de Senhas</h1>
+  </header>
+
+  <main>
+
+    <div class="painel">
+      <p class="label">Senha sendo atendida</p>
+      <div class="senha-grande <%= senhaAtual === 0 ? 'vazia' : '' %>">
+        <%= senhaAtual > 0 ? String(senhaAtual).padStart(3, '0') : '---' %>
+      </div>
+
+      <% if (historico.length > 0) { %>
+        <div class="historico">
+          <p class="label">Últimas chamadas</p>
+          <div class="lista-historico">
+            <% historico.forEach(function(s) { %>
+              <span class="senha-anterior"><%= String(s).padStart(3, '0') %></span>
+            <% }); %>
+          </div>
+        </div>
+      <% } %>
+    </div>
+
+    <div class="acoes">
+
+      <div class="card">
+        <h2>Paciente</h2>
+        <% if (ultimaEmitida) { %>
+          <p class="label">Última senha emitida</p>
+          <span class="numero-senha"><%= String(ultimaEmitida).padStart(3, '0') %></span>
+          <p class="aviso">Aguarde ser chamado.</p>
+        <% } %>
+        <form action="/pegar-senha" method="POST">
+          <button type="submit" class="btn btn-azul">Retirar senha</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2>Funcionário</h2>
+        <form action="/proxima" method="POST">
+          <button
+            type="submit"
+            class="btn btn-verde"
+            <%= !temProxima ? 'disabled' : '' %>
+          >
+            Chamar próxima senha
+          </button>
+        </form>
+        <% if (!temProxima) { %>
+          <p class="aviso">Nenhuma senha na fila.</p>
+        <% } %>
+      </div>
+
+    </div>
+
+  </main>
+
+</body>
+</html>
