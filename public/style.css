@@ -1,15 +1,18 @@
+/* Zera margens e padding padrão do navegador, e inclui bordas no tamanho dos elementos */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+/* Estilo geral da página */
 body {
   font-family: Arial, sans-serif;
-  background-color: #eef2f7;
+  background-color: #eef2f7; /* fundo azul bem claro */
   color: #333;
 }
 
+/* Barra do topo */
 header {
   background-color: #1a5fa8;
   color: white;
@@ -21,15 +24,17 @@ header h1 {
   letter-spacing: 1px;
 }
 
+/* Área central da página com largura máxima e centralizada */
 main {
   max-width: 800px;
   margin: 32px auto;
   padding: 0 20px;
   display: flex;
-  flex-direction: column;
-  gap: 24px;
+  flex-direction: column; /* empilha os elementos verticalmente */
+  gap: 24px;              /* espaço entre os blocos */
 }
 
+/* Texto pequeno usado como título de seção */
 .label {
   font-size: 0.85rem;
   text-transform: uppercase;
@@ -38,6 +43,7 @@ main {
   margin-bottom: 10px;
 }
 
+/* Painel com a senha atual e histórico */
 .painel {
   background: white;
   border-radius: 8px;
@@ -46,6 +52,7 @@ main {
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
+/* Número grande exibido no painel */
 .senha-grande {
   font-size: 5rem;
   font-weight: bold;
@@ -59,6 +66,7 @@ main {
   margin-bottom: 20px;
 }
 
+/* Quando não há nenhuma senha, o número fica cinza */
 .senha-grande.vazia {
   color: #bbb;
 }
@@ -67,6 +75,7 @@ main {
   margin-top: 4px;
 }
 
+/* Linha com as senhas anteriores lado a lado */
 .lista-historico {
   display: flex;
   justify-content: center;
@@ -74,6 +83,7 @@ main {
   margin-top: 8px;
 }
 
+/* Cada número do histórico */
 .senha-anterior {
   background-color: #dce8f8;
   color: #1a5fa8;
@@ -84,11 +94,13 @@ main {
   letter-spacing: 2px;
 }
 
+/* Linha com os dois cards (paciente e funcionário) lado a lado */
 .acoes {
   display: flex;
   gap: 20px;
 }
 
+/* Cada card ocupa metade do espaço disponível */
 .card {
   flex: 1;
   background: white;
@@ -106,6 +118,7 @@ main {
   margin-bottom: 20px;
 }
 
+/* Número grande que aparece no card do paciente após retirar a senha */
 .numero-senha {
   display: block;
   font-size: 3rem;
@@ -115,12 +128,14 @@ main {
   margin-bottom: 8px;
 }
 
+/* Texto de aviso menor */
 .aviso {
   font-size: 0.85rem;
   color: #999;
   margin-bottom: 16px;
 }
 
+/* Estilo base dos botões */
 .btn {
   border: none;
   padding: 14px 28px;
@@ -131,6 +146,7 @@ main {
   letter-spacing: 1px;
 }
 
+/* Botão azul (paciente) */
 .btn-azul {
   background-color: #1a5fa8;
   color: white;
@@ -140,6 +156,7 @@ main {
   background-color: #154e8c;
 }
 
+/* Botão verde (funcionário) */
 .btn-verde {
   background-color: #27a047;
   color: white;
@@ -149,11 +166,13 @@ main {
   background-color: #1f8a3a;
 }
 
+/* Botão desabilitado */
 .btn:disabled {
   background-color: #bbb;
   cursor: not-allowed;
 }
 
+/* Em telas pequenas, empilha os cards verticalmente */
 @media (max-width: 520px) {
   .acoes {
     flex-direction: column;

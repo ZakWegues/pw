@@ -14,16 +14,26 @@
 
   <main>
 
+    <!-- ── PAINEL PRINCIPAL ─────────────────────────────────────────────── -->
+    <!-- Mostra a senha sendo atendida agora e as 3 últimas chamadas         -->
     <div class="painel">
       <p class="label">Senha sendo atendida</p>
+
+      <!--
+        Se senhaAtual for 0 (ninguém foi chamado ainda), adiciona a classe "vazia"
+        para deixar o número cinza, e mostra "---" no lugar do número.
+        padStart(3, '0') formata o número com zeros à esquerda: 1 → "001"
+      -->
       <div class="senha-grande <%= senhaAtual === 0 ? 'vazia' : '' %>">
         <%= senhaAtual > 0 ? String(senhaAtual).padStart(3, '0') : '---' %>
       </div>
 
+      <!-- Só mostra o histórico se houver ao menos 1 senha anterior -->
       <% if (historico.length > 0) { %>
         <div class="historico">
           <p class="label">Últimas chamadas</p>
           <div class="lista-historico">
+            <!-- Percorre o array historico e exibe cada número -->
             <% historico.forEach(function(s) { %>
               <span class="senha-anterior"><%= String(s).padStart(3, '0') %></span>
             <% }); %>
@@ -32,23 +42,39 @@
       <% } %>
     </div>
 
+    <!-- ── CARDS DE AÇÃO ─────────────────────────────────────────────────── -->
     <div class="acoes">
 
+      <!-- Card do Paciente -->
       <div class="card">
         <h2>Paciente</h2>
+
+        <!--
+          Se ultimaEmitida não for null, significa que alguém retirou uma senha.
+          Exibe o número da última senha emitida.
+        -->
         <% if (ultimaEmitida) { %>
           <p class="label">Última senha emitida</p>
           <span class="numero-senha"><%= String(ultimaEmitida).padStart(3, '0') %></span>
           <p class="aviso">Aguarde ser chamado.</p>
         <% } %>
+
+        <!-- Formulário que faz POST para "/pegar-senha" ao clicar no botão -->
         <form action="/pegar-senha" method="POST">
           <button type="submit" class="btn btn-azul">Retirar senha</button>
         </form>
       </div>
 
+      <!-- Card do Funcionário -->
       <div class="card">
         <h2>Funcionário</h2>
+
+        <!-- Formulário que faz POST para "/proxima" ao clicar no botão -->
         <form action="/proxima" method="POST">
+          <!--
+            Se não houver próxima senha na fila (temProxima === false),
+            o botão fica desabilitado e não pode ser clicado.
+          -->
           <button
             type="submit"
             class="btn btn-verde"
@@ -57,6 +83,8 @@
             Chamar próxima senha
           </button>
         </form>
+
+        <!-- Mensagem exibida quando não há ninguém na fila -->
         <% if (!temProxima) { %>
           <p class="aviso">Nenhuma senha na fila.</p>
         <% } %>
