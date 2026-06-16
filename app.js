@@ -14,17 +14,22 @@ app.get('/', (req, res) => {
 });
 
 app.get('/paciente', (req, res) => {
-  const minhaSenha = req.query.senha ? parseInt(req.query.senha) : null;
   res.render('paciente', {
     senhaAtual,
-    historico: [...historico].reverse(),
-    minhaSenha
+    historico: historico.slice().reverse(),
+    minhaSenha: null
   });
 });
 
 app.post('/pegar-senha', (req, res) => {
-  const senha = proximaSenha++;
-  res.redirect('/paciente?senha=' + senha);
+  const minhaSenha = proximaSenha;
+  proximaSenha++;
+
+  res.render('paciente', {
+    senhaAtual,
+    historico: historico.slice().reverse(),
+    minhaSenha
+  });
 });
 
 app.get('/funcionario', (req, res) => {
@@ -38,7 +43,9 @@ app.post('/proxima', (req, res) => {
   if (proximaSenha > senhaAtual + 1) {
     if (senhaAtual > 0) {
       historico.push(senhaAtual);
-      if (historico.length > 3) historico.shift();
+      if (historico.length > 3) {
+        historico.shift();
+      }
     }
     senhaAtual++;
   }
